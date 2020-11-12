@@ -1,0 +1,137 @@
+/*
+ * @Descripttion: 全局css 类 
+ * @Author: TM丶
+ * @LastEditors: 小明丶
+ * @Date: 2019-03-11 21:02:51
+ * @LastEditTime: 2019-11-19
+ */
+@import "./mixin/var.less";
+
+
+
+.h_100 {
+    height: 100%;
+}
+
+.ml_15 {
+    margin-left: 15px;
+}
+
+.mx_4 {
+    margin-right: 4px;
+    margin-left: 4px;
+}
+
+.mx_8 {
+    margin-right: 8px;
+    margin-left: 8px;
+}
+
+.mx_10 {
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+.mx_12 {
+    margin-right: 12px;
+    margin-left: 12px;
+}
+
+.mx_15 {
+    margin-right: 15px;
+    margin-left: 15px;
+}
+
+.mr_15 {
+    margin-right: 15px;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clearfix {
+    zoom: 1;
+
+    &:after {
+        content: "";
+        display: block;
+        clear: both;
+    }
+}
+
+.text_center {
+    text-align: center;
+}
+
+.img_fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+.abs_center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.hidden {
+    display: none !important;
+}
+
+/*单行溢出*/
+.text_clip {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+
+.flex_start {
+    .flex(flex-start);
+}
+
+.flex_center {
+    .flex(center);
+}
+
+.flex_between {
+    .flex(space-between);
+}
+
+.flex_around {
+    .flex(space-around);
+}
+
+.flex_end {
+    .flex(flex-end);
+}
+
+.flex_1 {
+    flex: 1;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+
+.search_form {
+    margin: 32px 0;
+}
+
+#global_info {
+    .abs_center;
+    position: fixed;
+    padding: 0 30px;
+    height: 60px;
+    line-height: 60px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    transition: all .25s;
+}

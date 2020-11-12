@@ -1,0 +1,100 @@
+/*
+ * @Descripttion: 全局css 类
+ * @Author: TM丶
+ * @LastEditors: 小明丶
+ * @Date: 2019-03-11 21:02:51
+ * @LastEditTime: 2019-08-19 09:20:20
+ */
+
+html {
+    height: 100%;
+}
+
+body,
+#root {
+    height: 100%;
+    font-size: 14px;
+}
+
+html,
+body {
+    -webkit-overflow-scrolling: touch;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul {
+    margin: 0;
+}
+
+ul {
+    padding: 0;
+}
+
+hr {
+    border: none;
+}
+
+li {
+    list-style: none;
+}
+
+
+// 滚动条样式
+::-webkit-scrollbar {
+    max-width: 5px;
+    max-height: 8px;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background-color: #C9CAD3;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
+
+// placeholder样式控制
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: #C2C2C2;
+    font: 14px;
+}
+
+//取消 input：number默认样式
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+    color: #C2C2C2;
+    font: 14px;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+    color: #C2C2C2;
+    font: 14px;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    color: #C2C2C2;
+    font: 14px;
+}

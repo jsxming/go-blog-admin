@@ -1,0 +1,74 @@
+/*
+ * @Descripttion: 全局mixins变量
+ * @Author: TM丶
+ * @LastEditors: TM丶
+ * @Date: 2019-03-11 21:02:51
+ * @LastEditTime: 2019-04-05 15:03:05
+ */
+ @import "./var-color.less";
+
+ /* 字体 大小*/
+ @font-size-10: 10Px;
+ @font-size-11: 11Px;
+ @font-size-12: 12Px;
+ @font-size-14: 14Px;
+ @font-size-15: 15Px;
+ @font-size-16: 16Px;
+ @font-size-18: 18Px;
+ @font-size-24: 24Px;
+ @font-size-28: 28Px;
+ 
+ 
+ /* z-index*/
+ @zIndex-10:10;
+ @zIndex-20:20;
+ @zIndex-30:30;
+ @zIndex-40:40;
+ @zIndex-50:50;
+ @zIndex-100:100;
+ @zIndex-500:500;
+ @zIndex-999:9999;
+ 
+ /* border-radius */
+ @border-radius-5:5Px;
+ @border-radius-20:20Px;
+ 
+ // flex布局
+ .flex(@x:flex-start,@y:center,@wrap:nowrap,@dir:row) {
+   display: flex;
+   justify-content: @x;
+   align-items: @y;
+   flex-wrap: @wrap;
+   flex-direction: @dir;
+ }
+ 
+ 
+ .line-height(@val){
+   height: @val;
+   line-height: @val;
+ }
+ 
+ 
+ /*多行溢出 手机端使用*/
+ .text-clip-double(@num:3) {
+   display: -webkit-box;
+   overflow: hidden;
+   word-break: break-all;
+   text-overflow: ellipsis;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp: @num;
+ }
+ 
+ // 定位到html
+ .p-fixed(@bg:#fff) {
+   position: fixed;
+   top: 0;
+   right: 0;
+   bottom: 0;
+   left: 0;
+   overflow-y: scroll;
+   background-color: @bg;
+ }
+ 
+ 
+ 
