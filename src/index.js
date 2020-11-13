@@ -4,7 +4,7 @@ import { Provider, } from 'react-redux';
 import store, { persistor, } from '@/redux/persist';
 import { PersistGate, } from 'redux-persist/lib/integration/react';
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Route,
     Switch
 } from 'react-router-dom';
