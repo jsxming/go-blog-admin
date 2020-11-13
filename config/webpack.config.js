@@ -55,14 +55,14 @@ const sassModuleRegex = /\.module\.(scss|sass)$/;
 
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
-module.exports = function(webpackEnv) {
+module.exports = function (webpackEnv) {
     const isEnvDevelopment = webpackEnv === 'development';
     const isEnvProduction = webpackEnv === 'production';
 
     // Variable used for enabling profiling in Production
     // passed into alias object. Uses a flag if passed into the build command
     const isEnvProductionProfile =
-    isEnvProduction && process.argv.includes('--profile');
+        isEnvProduction && process.argv.includes('--profile');
 
     // We will provide `paths.publicUrlOrPath` to our app
     // as %PUBLIC_URL% in `index.html` and `process.env.PUBLIC_URL` in JavaScript.
@@ -158,7 +158,7 @@ module.exports = function(webpackEnv) {
             // require.resolve('webpack-dev-server/client') + '?/',
             // require.resolve('webpack/hot/dev-server'),
             isEnvDevelopment &&
-        require.resolve('react-dev-utils/webpackHotDevClient'),
+            require.resolve('react-dev-utils/webpackHotDevClient'),
             // Finally, this is your app's code:
             paths.appIndexJs,
             // We include the app code last so that if there is a runtime error during
@@ -184,7 +184,7 @@ module.exports = function(webpackEnv) {
             // webpack uses `publicPath` to determine where the app is being served from.
             // It requires a trailing slash, or the file assets will get an incorrect path.
             // We inferred the "public path" (such as / or /my-project) from homepage.
-            publicPath: paths.publicUrlOrPath,
+            publicPath: './',
             // Point sourcemap entries to original disk location (format as URL on Windows)
             devtoolModuleFilenameTemplate: isEnvProduction
                 ? info =>
@@ -192,7 +192,7 @@ module.exports = function(webpackEnv) {
                         .relative(paths.appSrc, info.absoluteResourcePath)
                         .replace(/\\/g, '/')
                 : isEnvDevelopment &&
-          (info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
+                (info => path.resolve(info.absoluteResourcePath).replace(/\\/g, '/')),
             // Prevents conflicts when multiple webpack runtimes (from different apps)
             // are used on the same page.
             jsonpFunction: `webpackJsonp${appPackageJson.name}`,
@@ -296,8 +296,8 @@ module.exports = function(webpackEnv) {
                 .map(ext => `.${ext}`)
                 .filter(ext => useTypeScript || !ext.includes('ts')),
             alias: {
-                '@':path.resolve('src'),
-                '~':path.resolve('node_modules'),
+                '@': path.resolve('src'),
+                '~': path.resolve('node_modules'),
                 // Support React Native Web
                 // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
                 'react-native': 'react-native-web',
@@ -386,7 +386,7 @@ module.exports = function(webpackEnv) {
                                             loaderMap: {
                                                 svg: {
                                                     ReactComponent:
-                            '@svgr/webpack?-svgo,+titleProp,+ref![path]',
+                                                        '@svgr/webpack?-svgo,+titleProp,+ref![path]',
                                                 },
                                             },
                                         },
@@ -435,7 +435,7 @@ module.exports = function(webpackEnv) {
                                 importLoaders: 2,
                                 modules: false,
                                 sourceMap: isEnvProduction && shouldUseSourceMap,
-                            },'less-loader'),
+                            }, 'less-loader'),
                             sideEffects: true,
                         },
                         {
@@ -521,8 +521,8 @@ module.exports = function(webpackEnv) {
             // a network request.
             // https://github.com/facebook/create-react-app/issues/5358
             isEnvProduction &&
-        shouldInlineRuntimeChunk &&
-        new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime-.+[.]js/]),
+            shouldInlineRuntimeChunk &&
+            new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime-.+[.]js/]),
             // Makes some environment variables available in index.html.
             // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
             // <link rel="icon" href="%PUBLIC_URL%/favicon.ico">
@@ -549,14 +549,14 @@ module.exports = function(webpackEnv) {
             // makes the discovery automatic so you don't have to restart.
             // See https://github.com/facebook/create-react-app/issues/186
             isEnvDevelopment &&
-        new WatchMissingNodeModulesPlugin(paths.appNodeModules),
+            new WatchMissingNodeModulesPlugin(paths.appNodeModules),
             isEnvProduction &&
-        new MiniCssExtractPlugin({
-            // Options similar to the same options in webpackOptions.output
-            // both options are optional
-            filename: 'static/css/[name].[contenthash:8].css',
-            chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
-        }),
+            new MiniCssExtractPlugin({
+                // Options similar to the same options in webpackOptions.output
+                // both options are optional
+                filename: 'static/css/[name].[contenthash:8].css',
+                chunkFilename: 'static/css/[name].[contenthash:8].chunk.css',
+            }),
             // Generate an asset manifest file with the following content:
             // - "files" key: Mapping of all asset filenames to their corresponding
             //   output file so that tools can pick it up without having to parse
@@ -590,48 +590,48 @@ module.exports = function(webpackEnv) {
             // Generate a service worker script that will precache, and keep up to date,
             // the HTML & assets that are part of the webpack build.
             isEnvProduction &&
-        new WorkboxWebpackPlugin.GenerateSW({
-            clientsClaim: true,
-            exclude: [/\.map$/, /asset-manifest\.json$/],
-            importWorkboxFrom: 'cdn',
-            navigateFallback: paths.publicUrlOrPath + 'index.html',
-            navigateFallbackBlacklist: [
-            // Exclude URLs starting with /_, as they're likely an API call
-                new RegExp('^/_'),
-                // Exclude any URLs whose last part seems to be a file extension
-                // as they're likely a resource and not a SPA route.
-                // URLs containing a "?" character won't be blacklisted as they're likely
-                // a route with query params (e.g. auth callbacks).
-                new RegExp('/[^/?]+\\.[^/]+$'),
-            ],
-        }),
+            new WorkboxWebpackPlugin.GenerateSW({
+                clientsClaim: true,
+                exclude: [/\.map$/, /asset-manifest\.json$/],
+                importWorkboxFrom: 'cdn',
+                navigateFallback: paths.publicUrlOrPath + 'index.html',
+                navigateFallbackBlacklist: [
+                    // Exclude URLs starting with /_, as they're likely an API call
+                    new RegExp('^/_'),
+                    // Exclude any URLs whose last part seems to be a file extension
+                    // as they're likely a resource and not a SPA route.
+                    // URLs containing a "?" character won't be blacklisted as they're likely
+                    // a route with query params (e.g. auth callbacks).
+                    new RegExp('/[^/?]+\\.[^/]+$'),
+                ],
+            }),
             // TypeScript type checking
             useTypeScript &&
-        new ForkTsCheckerWebpackPlugin({
-            typescript: resolve.sync('typescript', {
-                basedir: paths.appNodeModules,
+            new ForkTsCheckerWebpackPlugin({
+                typescript: resolve.sync('typescript', {
+                    basedir: paths.appNodeModules,
+                }),
+                async: isEnvDevelopment,
+                useTypescriptIncrementalApi: true,
+                checkSyntacticErrors: true,
+                resolveModuleNameModule: process.versions.pnp
+                    ? `${__dirname}/pnpTs.js`
+                    : undefined,
+                resolveTypeReferenceDirectiveModule: process.versions.pnp
+                    ? `${__dirname}/pnpTs.js`
+                    : undefined,
+                tsconfig: paths.appTsConfig,
+                reportFiles: [
+                    '**',
+                    '!**/__tests__/**',
+                    '!**/?(*.)(spec|test).*',
+                    '!**/src/setupProxy.*',
+                    '!**/src/setupTests.*',
+                ],
+                silent: true,
+                // The formatter is invoked directly in WebpackDevServerUtils during development
+                formatter: isEnvProduction ? typescriptFormatter : undefined,
             }),
-            async: isEnvDevelopment,
-            useTypescriptIncrementalApi: true,
-            checkSyntacticErrors: true,
-            resolveModuleNameModule: process.versions.pnp
-                ? `${__dirname}/pnpTs.js`
-                : undefined,
-            resolveTypeReferenceDirectiveModule: process.versions.pnp
-                ? `${__dirname}/pnpTs.js`
-                : undefined,
-            tsconfig: paths.appTsConfig,
-            reportFiles: [
-                '**',
-                '!**/__tests__/**',
-                '!**/?(*.)(spec|test).*',
-                '!**/src/setupProxy.*',
-                '!**/src/setupTests.*',
-            ],
-            silent: true,
-            // The formatter is invoked directly in WebpackDevServerUtils during development
-            formatter: isEnvProduction ? typescriptFormatter : undefined,
-        }),
         ].filter(Boolean),
         // Some libraries import Node modules but don't use them in the browser.
         // Tell webpack to provide empty mocks for them so importing them works.
