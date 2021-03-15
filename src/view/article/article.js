@@ -174,7 +174,7 @@ export default class Order extends React.Component {
         API.updateArticle(params).then(() => {
             const list = this.state.tableData || [];
             list[index] = params;
-            this.setState({ visible: false, tableData: list });
+            this.setState({ tableData: list });
             this.getTableData();
             message.success('操作成功');
         }).catch(() => {
@@ -210,7 +210,7 @@ export default class Order extends React.Component {
         } else {
             API.createArticle({ ...v }).then(() => {
                 this.getTableData();
-                this.setState({ visible: false });
+                // this.setState({ visible: false });
                 message.success('操作成功');
             }).catch(() => {
 
